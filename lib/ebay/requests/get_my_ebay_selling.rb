@@ -1,4 +1,5 @@
 require 'ebay/types/item_list_customization'
+require 'ebay/types/sold_list'
 
 module Ebay # :nodoc:
   module Requests # :nodoc:
@@ -17,7 +18,7 @@ module Ebay # :nodoc:
       root_element_name 'GetMyeBaySellingRequest'
       object_node :scheduled_list, 'ScheduledList', :class => ItemListCustomization, :optional => true
       object_node :active_list, 'ActiveList', :class => ItemListCustomization, :optional => true
-      object_node :sold_list, 'SoldList', :class => ItemListCustomization, :optional => true
+      object_node :sold_list, 'SoldList', :class => SoldList, :optional => true
       object_node :unsold_list, 'UnsoldList', :class => ItemListCustomization, :optional => true
       object_node :bid_list, 'BidList', :class => ItemListCustomization, :optional => true
       object_node :deleted_from_sold_list, 'DeletedFromSoldList', :class => ItemListCustomization, :optional => true

@@ -4,6 +4,7 @@ $:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 require 'ebay'
 require 'config'
 require 'rexml/document'
+require "nokogiri"
 
 ebay = Ebay::Api.new
 

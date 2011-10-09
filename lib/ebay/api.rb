@@ -3,6 +3,7 @@ require 'zlib'
 require 'stringio'
 require 'ebay/request/connection'
 require 'ebay/api_methods'
+require "nokogiri"
 
 module Ebay #:nodoc:
   class EbayError < StandardError #:nodoc:
@@ -153,6 +154,7 @@ module Ebay #:nodoc:
       result << REXML::XMLDecl.new('1.0', 'UTF-8')
       result << request.save_to_xml
       result.root.add_namespace XmlNs
+      
       result.to_s
     end
 
@@ -176,7 +178,7 @@ module Ebay #:nodoc:
     def parse(content, format)
       case format
       when :object
-        xml = REXML::Document.new(content)
+        xml = Nokogiri::XML content # REXML::Document.new(content)
         # Fixes the wrong case of API returned by eBay
         fix_root_element_name(xml)
         result = XML::Mapping.load_object_from_xml(xml.root)

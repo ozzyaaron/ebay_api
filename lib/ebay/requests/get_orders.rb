@@ -14,7 +14,8 @@ module Ebay # :nodoc:
       include XML::Mapping
       include Initializer
       root_element_name 'GetOrdersRequest'
-      value_array_node :order_ids, 'OrderIDArray', 'OrderID', :default_value => []
+      value_array_node :order_ids, 'OrderIDArray', 'OrderID', :optional => true, :default_value => []
+      numeric_node :number_of_days, 'NumberOfDays', :optional => true
       time_node :create_time_from, 'CreateTimeFrom', :optional => true
       time_node :create_time_to, 'CreateTimeTo', :optional => true
       text_node :order_role, 'OrderRole', :optional => true
